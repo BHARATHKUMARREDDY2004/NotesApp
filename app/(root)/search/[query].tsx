@@ -9,14 +9,14 @@ const Search = () => {
   const { query } = useLocalSearchParams();
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeAreaView className="bg-orange h-full">
       <FlatList
         data={[]} // Always empty
         keyExtractor={(item) => item} // This won't be used since data is empty
         renderItem={({ item }) => null} // No items will be rendered
         ListHeaderComponent={() => (
           <>
-            <View className="flex my-6 px-4">
+            <View className="flex my-2 px-2">
               <Text className="font-pmedium text-gray-100 text-sm">
                 Search Results
               </Text>
@@ -24,7 +24,7 @@ const Search = () => {
                 {query}
               </Text>
 
-              <View className="mt-6 mb-8">
+              <View className="my-4">
                 <SearchInput initialQuery={query} />
               </View>
             </View>

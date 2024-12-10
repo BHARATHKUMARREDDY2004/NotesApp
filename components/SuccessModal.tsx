@@ -31,9 +31,8 @@ export default function SuccessModal({ visible, onClose }: SuccessModalProps) {
 
           <CustomButton
             title="Browse Home"
-            bgVariant="success"
-            textVariant="primary"
-            className="w-full"
+            textStyle='text-white'
+            className="w-full bg-success-500"
             onPress={onClose}
           />
         </View>

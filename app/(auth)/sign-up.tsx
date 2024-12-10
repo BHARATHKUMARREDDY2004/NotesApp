@@ -29,7 +29,7 @@ const SignUp = () => {
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="relative">
-        <Image 
+        <Image
           source={require("@/assets/images/onboarding1.png")}
           className="z-0 w-full h-[700px]"
           resizeMode="contain"
@@ -39,7 +39,7 @@ const SignUp = () => {
       <View className="px-5 pt-0 pb-6">
         <View className="mb-2">
           <Text className="text-2xl font-pbold text-gray-800 text-center">
-            Sign Up or Sign In 
+            Sign Up or Sign In
           </Text>
         </View>
         <InputField
@@ -52,9 +52,8 @@ const SignUp = () => {
         />
         <CustomButton
           title="Continue"
-          bgVariant="primary"
-          textVariant="primary"
-          className="mt-5"
+          textStyle="text-white"
+          className="mt-5 bg-orange"
           onPress={handleSignUp}
         />
       </View>
@@ -64,10 +63,7 @@ const SignUp = () => {
         onVerify={handleVerifyOtp}
         onClose={() => setShowOtpModal(false)}
       />
-      <SuccessModal
-        visible={showSuccessModal}
-        onClose={handleSuccess}
-      />
+      <SuccessModal visible={showSuccessModal} onClose={handleSuccess} />
     </ScrollView>
   );
 };

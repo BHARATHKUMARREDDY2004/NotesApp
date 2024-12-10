@@ -6,7 +6,7 @@ import CustomButton from "./CustomButton";
 
 import { EmptyStateProps } from "@/types/type";
 
-const EmptyState = ({ title, subtitle } : EmptyStateProps) => {
+const EmptyState = ({ title, subtitle }: EmptyStateProps) => {
   return (
     <View className="flex justify-center items-center px-4">
       <Image
@@ -23,7 +23,8 @@ const EmptyState = ({ title, subtitle } : EmptyStateProps) => {
       <CustomButton
         title="Back to Explore"
         onPress={() => router.push("/home")}
-        className="w-full my-5"
+        textStyle="text-white"
+        className="w-full my-5 bg-orange"
       />
     </View>
   );

@@ -3,14 +3,14 @@ import { usePathname, router } from "expo-router";
 import { View, TouchableOpacity, TextInput, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { SearchInputProps } from '@/types/type';
+import { SearchInputProps } from "@/types/type";
 
 const SearchInput = ({ initialQuery = "" }: SearchInputProps) => {
   const pathname = usePathname();
   const [query, setQuery] = useState(initialQuery);
 
   const handleSearch = () => {
-    const sanitizedQuery = query.trim(); // Remove leading/trailing spaces
+    const sanitizedQuery = query.trim();
 
     if (!sanitizedQuery) {
       Alert.alert(
@@ -20,32 +20,41 @@ const SearchInput = ({ initialQuery = "" }: SearchInputProps) => {
       return;
     }
 
-    const encodedQuery = encodeURIComponent(sanitizedQuery); // Encode for safe navigation
+    const encodedQuery = encodeURIComponent(sanitizedQuery);
 
     if (pathname.startsWith("/search")) {
-      router.setParams({ query: encodedQuery }); // Update query in route params
+      router.setParams({ query: encodedQuery });
     } else {
-      router.push(`/search/${encodedQuery}`); // Navigate to the new route
+      router.push(`/search/${encodedQuery}`);
     }
   };
 
   return (
-    <View className="flex flex-row items-center space-x-4 w-full h-14 px-4 bg-black-100 rounded-lg border-2 border-black-200 focus-within:border-primary">
+    <View className="InputContainer flex flex-row items-center rounded-2xl shadow-md bg-white px-4 py-2">
+      {/* Search Input */}
       <TextInput
-        className="flex-1 text-base text-fourth font-pregular"
+        className="input flex-1 text-gray-700 text-lg font-pmedium"
         value={query}
-        placeholder="Search a wholesaler or product"
+        placeholder="Search"
         placeholderTextColor="#A9A9B3"
         onChangeText={(text) => setQuery(text)}
         onSubmitEditing={handleSearch}
         returnKeyType="search"
       />
-
-      <TouchableOpacity onPress={handleSearch} className="p-2">
-        <Ionicons name="search" size={24} color="#FFC93C" />
+      {/* Search Icon */}
+      <TouchableOpacity onPress={handleSearch} className="p-2 labelforsearch">
+        <Ionicons name="search" size={20} color="#727272" />
+      </TouchableOpacity>
+      {/* Divider */}
+      <View className="h-4/5 w-px bg-gray-200 mx-3" />
+      {/* Mic Button */}
+      <TouchableOpacity>
+        <Ionicons name="mic" size={20} color="#FF7A00" />
       </TouchableOpacity>
     </View>
   );
 };
 
 export default SearchInput;
+
+

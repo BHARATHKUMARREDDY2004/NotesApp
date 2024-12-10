@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
+import { LinearGradient } from "expo-linear-gradient";
 
 import CustomButton from "@/components/CustomButton";
 import { onboarding } from "@/constants";
@@ -19,7 +20,7 @@ const Onboarding = () => {
   };
 
   return (
-    <SafeAreaView className="flex h-full items-center justify-between bg-white">
+    <SafeAreaView className="flex h-full items-center justify-between bg-radial-gradient">
       {/* Skip Button */}
       <TouchableOpacity
         onPress={handleNavigation} // Directly navigate when Skip is pressed
@@ -33,10 +34,10 @@ const Onboarding = () => {
         ref={swiperRef}
         loop={false}
         dot={
-          <View className="w-[24px] h-[6px] mx-1 bg-[#eaf6f6] rounded-full" /> // Update dot colors
+          <View className="w-[24px] h-[6px] mx-1 bg-gray-100 rounded-full" /> // Update dot colors
         }
         activeDot={
-          <View className="w-[24px] h-[6px] mx-1 bg-[#ff6f3c] rounded-full" /> // Update activeDot colors
+          <View className="w-[24px] h-[6px] mx-1 bg-orange rounded-full" /> // Update activeDot colors
         }
         onIndexChanged={(index) => setActiveIndex(index)}
       >
@@ -58,7 +59,6 @@ const Onboarding = () => {
           </View>
         ))}
       </Swiper>
-
       {/* Button */}
       <CustomButton
         title={isLastSlide ? "Get Started" : "Next"}
@@ -69,7 +69,8 @@ const Onboarding = () => {
             swiperRef.current?.scrollBy(1); // Swipe to next slide
           }
         }}
-        className="w-11/12 mt-5 mb-5"
+        textStyle="text-white"
+        className="w-11/12 mt-5 mb-5 bg-orange"
       />
     </SafeAreaView>
   );
