@@ -1,10 +1,10 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import InputField from "@/components/InputField";
 import CustomButton from "@/components/CustomButton";
 import OTPModal from "@/components/OTPModal";
 import SuccessModal from "@/components/SuccessModal";
 import { useState } from "react";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 
 const SignUp = () => {
   const [phone, setPhone] = useState("");
@@ -27,18 +27,23 @@ const SignUp = () => {
   };
 
   return (
-    <ScrollView className="flex-1 bg-white">
-      <View className="relative">
-        <Image
-          source={require("@/assets/images/onboarding1.png")}
-          className="z-0 w-full h-[700px]"
-          resizeMode="contain"
-        />
+    <View className="flex-1 bg-orange-200">
+      <View className="flex-1 flex-col justify-evenly">
+      {/* Logo and Tagline */}
+      <View className="items-center justify-center h-[65%]">
+        <View className="flex flex-row items-center bg-black/30 rounded-2xl p-4 mb-4">
+          <Text className="text-2xl font-pbold text-white">dukaa</Text>
+          <Text className="text-2xl font-pbold text-orange">On</Text>
+        </View>
+        <Text className="text-xl font-pmedium text-gray-200 text-center">
+          Keeping your bussiness going on ...
+        </Text>
       </View>
 
-      <View className="px-5 pt-0 pb-6">
+      {/* Sign Up or Sign In */}
+      <View className="w-full px-5 pt-0 pb-6">
         <View className="mb-2">
-          <Text className="text-2xl font-pbold text-gray-800 text-center">
+          <Text className="text-2xl font-pbold text-gray-600 text-center">
             Sign Up or Sign In
           </Text>
         </View>
@@ -58,13 +63,15 @@ const SignUp = () => {
         />
       </View>
 
+      </View>
+
       <OTPModal
         visible={showOtpModal}
         onVerify={handleVerifyOtp}
         onClose={() => setShowOtpModal(false)}
       />
       <SuccessModal visible={showSuccessModal} onClose={handleSuccess} />
-    </ScrollView>
+    </View>
   );
 };
 

@@ -29,9 +29,17 @@ module.exports = {
           900: "#732B00",
         },
         black: {
-          DEFAULT: "#000",
-          100: "#1E1E2D",
-          200: "#232533",
+          DEFAULT: "#000000", // Default black
+          50: "#F5F5F5",      // Lightest black (very close to white)
+          100: "#E5E5E5",     // Very light gray
+          200: "#CCCCCC",     // Light gray
+          300: "#999999",     // Medium gray
+          400: "#666666",     // Darker gray
+          500: "#333333",     // Dark gray
+          600: "#1A1A1A",     // Charcoal
+          700: "#121212",     // Off-black
+          800: "#0D0D0D",     // Almost black
+          900: "#000000"      // Pure black
         },
         gray: {
           100: "#CDCDE0",

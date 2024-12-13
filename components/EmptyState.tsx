@@ -8,15 +8,15 @@ import { EmptyStateProps } from "@/types/type";
 
 const EmptyState = ({ title, subtitle }: EmptyStateProps) => {
   return (
-    <View className="flex justify-center items-center px-4">
+    <View className="flex justify-center items-center px-4 py-[20%]">
       <Image
         source={images.empty}
         resizeMode="contain"
         className="w-[270px] h-[216px]"
       />
 
-      <Text className="text-sm font-pmedium text-gray-100">{title}</Text>
-      <Text className="text-xl text-center font-psemibold text-white mt-2">
+      <Text className="text-md font-psemibold text-black-400">{title}</Text>
+      <Text className="text-xl text-center font-psemibold text-black-500 mt-2">
         {subtitle}
       </Text>
 

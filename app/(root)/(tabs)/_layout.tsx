@@ -6,15 +6,15 @@ import { TabIconProps } from "@/types/type";
 
 const TabIcon = ({ icon, color, name, focused }: TabIconProps) => {
   return (
-    <View className="flex items-center justify-center gap-2">
+    <View className="flex items-center justify-center">
       <Image
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-7 h-7"
+        className="w-9 h-9"
       />
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
+        className={`${focused ? "font-psemibold" : "font-pregular"} text-lg`}
         style={{ color: color }}
       >
         {name}
@@ -28,14 +28,14 @@ const TabLayout = () => {
     <>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: "#FFA001",
+          tabBarActiveTintColor: "#FFA002",
           tabBarInactiveTintColor: "#5C636E",
           tabBarShowLabel: false,
           tabBarStyle: {
             backgroundColor: "#FFFDF6",
             borderTopWidth: 1,
             borderTopColor: "#FFFFFF",
-            height: 64,
+            height: 70,
           },
         }}
       >
@@ -55,22 +55,22 @@ const TabLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="loan-insurance"
+          name="loan"
           options={{
-            title: "Loan&Insurance",
+            title: "Loan",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
                 icon={icons.loan}
                 color={color}
-                name="Loan & Insurance"
+                name="Loan"
                 focused={focused}
               />
             ),
           }}
         />
 
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="reorder"
           options={{
             title: "Reorder",
@@ -84,7 +84,7 @@ const TabLayout = () => {
               />
             ),
           }}
-        />
+        /> */}
         <Tabs.Screen
           name="chat"
           options={{
@@ -95,6 +95,21 @@ const TabLayout = () => {
                 icon={icons.message}
                 color={color}
                 name="Chat"
+                focused={focused}
+              />
+            ),
+          }}
+        />
+                <Tabs.Screen
+          name="cart"
+          options={{
+            title: "Cart",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.cart}
+                color={color}
+                name="Cart"
                 focused={focused}
               />
             ),

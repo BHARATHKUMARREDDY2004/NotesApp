@@ -4,10 +4,15 @@ import home from '@/assets/icons/home.png'
 import reorder from '@/assets/icons/reorder.png'
 import message from '@/assets/icons/message.png'
 import loan from '@/assets/icons/loan.png'
+import cart from '@/assets/icons/cart.png'
+
 import onboarding1 from '@/assets/images/onboarding1.png'
 import onboarding2 from '@/assets/images/onboarding2.png'
 import onboarding3 from '@/assets/images/onboarding3.png'
 import empty from '@/assets/images/empty.png'
+import BakeryBiscuits  from '@/assets/images/BakeryBiscuits.png'
+import OilGheeMasala from '@/assets/images/OilGheeMasala.png'
+import DryfriutsCererals from '@/assets/images/DryfriutsCererals.png'
 
 
 
@@ -16,7 +21,10 @@ export const images = {
   onboarding1,
   onboarding2,
   onboarding3,
-  empty
+  empty,
+  BakeryBiscuits,
+  OilGheeMasala,
+  DryfriutsCererals
 };
 
 export const icons = {
@@ -24,7 +32,8 @@ export const icons = {
   home,
   loan,
   reorder,
-  message
+  message,
+  cart
 };
 
 export const onboarding = [

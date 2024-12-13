@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
-import { LinearGradient } from "expo-linear-gradient";
 
 import CustomButton from "@/components/CustomButton";
 import { onboarding } from "@/constants";
@@ -20,13 +19,13 @@ const Onboarding = () => {
   };
 
   return (
-    <SafeAreaView className="flex h-full items-center justify-between bg-radial-gradient">
+    <SafeAreaView className="flex h-full items-center justify-between bg-orange-200">
       {/* Skip Button */}
       <TouchableOpacity
         onPress={handleNavigation} // Directly navigate when Skip is pressed
-        className="w-full flex justify-end items-end px-5"
+        className="w-full flex justify-end items-end"
       >
-        <Text className="text-black text-md font-pbold">Skip</Text>
+        <Text className="text-black text-md font-pbold bg-white/80 rounded-full px-3 mr-4">Skip</Text>
       </TouchableOpacity>
 
       {/* Swiper */}
