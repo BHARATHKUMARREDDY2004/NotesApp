@@ -1,7 +1,9 @@
 import React from "react";
-import { Text, View, Image, FlatList } from "react-native";
+import { Text, View, Image, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesome } from "@expo/vector-icons";
+import { router } from "expo-router";
 import SearchInput from "@/components/SearchInput";
 import { images } from "@/constants";
 
@@ -72,6 +74,36 @@ const categoriesData = [
   },
 ];
 
+// Delivery Header Section
+const DeliveryHeader = () => {
+  return (
+    <>
+      {/* Time and Location */}
+      <View className="flex-row items-center justify-between mb-4">
+        <View>
+          <Text className="text-gray-800 font-psemibold text-xl">
+            dukka
+            <Text className="text-orange-500 font-psemibold text-xl">On</Text>
+          </Text>
+          <Text className="text-gray-600 text-sm">
+            Phagwara, Punjab, India{" "}
+            <FontAwesome name="chevron-down" size={14} />
+          </Text>
+        </View>
+        {/* Profile Icon */}
+        <TouchableOpacity onPress={()=>{router.push("/(root)/(account)/profile")}} className="h-15 w-15">
+          <View className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md">
+            <FontAwesome name="user" size={24} color="black" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Search Bar */}
+      <SearchInput />
+    </>
+  );
+};
+
 // CategoryGrid Component
 const CategoryGrid = ({ data }: any) => {
   return (
@@ -82,16 +114,17 @@ const CategoryGrid = ({ data }: any) => {
       renderItem={({ item }) => (
         <View className="flex-1 items-center m-2">
           <View className="bg-white/40 rounded-xl">
-          <Image
-            source={item.image}
-            className="w-[120px] h-[120px]"
-            resizeMode="cover"
-          />
+            <Image
+              source={item.image}
+              className="w-[120px] h-[120px]"
+              resizeMode="cover"
+            />
           </View>
           <Text className="text-center mt-1 text-xs">{item.name}</Text>
         </View>
       )}
       columnWrapperStyle={{ justifyContent: "space-between" }}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
@@ -117,10 +150,12 @@ export default function Home() {
           )}
           ListHeaderComponent={
             <View className="mx-1 mb-3">
-              <SearchInput />
+              {/* <SearchInput /> */}
+              <DeliveryHeader />
             </View>
           }
           contentContainerStyle={{ paddingBottom: 20 }}
+          showsVerticalScrollIndicator={false}
         />
       </SafeAreaView>
     </LinearGradient>

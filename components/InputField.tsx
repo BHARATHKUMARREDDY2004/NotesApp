@@ -23,7 +23,7 @@ const InputField = ({
             </Text>
           )}
           <View
-            className={`flex flex-row items-center bg-neutral-100 rounded-full border border-neutral-300 px-3 ${containerStyle}`}
+            className={`flex flex-row items-center bg-neutral-100 rounded-2xl border border-neutral-300 px-3 ${containerStyle}`}
           >
             {icon && <Ionicons name={icon} size={20} className="text-gray-400 mr-3" />}
             <TextInput

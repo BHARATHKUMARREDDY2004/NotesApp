@@ -23,7 +23,7 @@ const SignUp = () => {
 
   const handleSuccess = () => {
     setShowSuccessModal(false);
-    router.push("/(root)/(tabs)/home");
+    router.replace("/(root)/(tabs)/home");
   };
 
   return (
