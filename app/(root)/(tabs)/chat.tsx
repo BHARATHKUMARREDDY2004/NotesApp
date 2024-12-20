@@ -9,6 +9,8 @@ export default function Chat() {
                 Chat
             </Text>
         </View>
+
+      <View className="pb-[100px]"/>
     </SafeAreaView>
   );
 }

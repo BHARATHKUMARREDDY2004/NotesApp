@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, Image, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
 import SearchInput from "@/components/SearchInput";
+import CategoryGrid from "@/components/CategoryGrid";
 import { images } from "@/constants";
+import { useStore } from "@/store";
+import LocationPrompt from "@/components/LocationPrompt";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 // Flattened data for rendering
 const categoriesData = [
@@ -74,24 +79,33 @@ const categoriesData = [
   },
 ];
 
-// Delivery Header Section
 const DeliveryHeader = () => {
+  const { userLocation, toggleLocationModal } = useStore();
+  const placeName = userLocation?.placeName || "Select Location";
+
   return (
     <>
       {/* Time and Location */}
       <View className="flex-row items-center justify-between mb-4">
-        <View>
-          <Text className="text-gray-800 font-psemibold text-xl">
-            dukka
-            <Text className="text-orange-500 font-psemibold text-xl">On</Text>
-          </Text>
-          <Text className="text-gray-600 text-sm">
-            Phagwara, Punjab, India{" "}
-            <FontAwesome name="chevron-down" size={14} />
-          </Text>
-        </View>
+        <TouchableOpacity onPress={toggleLocationModal}>
+          <View>
+            <Text className="text-gray-800 font-psemibold text-xl">
+              dukaa
+              <Text className="text-orange-500 font-psemibold text-xl">On</Text>
+            </Text>
+            <Text className="text-gray-600 text-sm">
+              {placeName}{" "}
+              <FontAwesome name="chevron-down" size={14} />
+            </Text>
+          </View>
+        </TouchableOpacity>
         {/* Profile Icon */}
-        <TouchableOpacity onPress={()=>{router.push("/(root)/(account)/profile")}} className="h-15 w-15">
+        <TouchableOpacity
+          onPress={() => {
+            router.push("/(root)/(account)/profile");
+          }}
+          className="h-15 w-15"
+        >
           <View className="w-12 h-12 bg-white rounded-full items-center justify-center shadow-md">
             <FontAwesome name="user" size={24} color="black" />
           </View>
@@ -104,33 +118,25 @@ const DeliveryHeader = () => {
   );
 };
 
-// CategoryGrid Component
-const CategoryGrid = ({ data }: any) => {
-  return (
-    <FlatList
-      data={data}
-      keyExtractor={(item, index) => `${item.name}-${index}`}
-      numColumns={3}
-      renderItem={({ item }) => (
-        <View className="flex-1 items-center m-2">
-          <View className="bg-white/40 rounded-xl">
-            <Image
-              source={item.image}
-              className="w-[120px] h-[120px]"
-              resizeMode="cover"
-            />
-          </View>
-          <Text className="text-center mt-1 text-xs">{item.name}</Text>
-        </View>
-      )}
-      columnWrapperStyle={{ justifyContent: "space-between" }}
-      showsVerticalScrollIndicator={false}
-    />
-  );
-};
-
 // Home Component
 export default function Home() {
+  const { userLocation, toggleLocationModal } = useStore();
+  const clearLocationData = async () => {
+    try {
+      await AsyncStorage.removeItem("dukaaon-user-location");
+      console.log("Location data removed successfully!");
+    } catch (error) {
+      console.error("Failed to remove location data:", error);
+    }
+  };
+
+  useEffect(() => {
+    clearLocationData()
+    if (!userLocation) {
+      toggleLocationModal();
+    }
+  }, []);
+
   return (
     <LinearGradient
       colors={["#FFC281", "#FFEBD7"]}
@@ -144,20 +150,20 @@ export default function Home() {
           keyExtractor={(item, index) => `${item.title}-${index}`}
           renderItem={({ item }) => (
             <View className="mb-4">
-              <Text className="text-lg font-semibold mb-2">{item.title}</Text>
+              <Text className="text-lg font-psemibold mb-2">{item.title}</Text>
               <CategoryGrid data={item.items} />
             </View>
           )}
           ListHeaderComponent={
             <View className="mx-1 mb-3">
-              {/* <SearchInput /> */}
               <DeliveryHeader />
             </View>
           }
-          contentContainerStyle={{ paddingBottom: 20 }}
+          contentContainerStyle={{ paddingBottom: 80 }}
           showsVerticalScrollIndicator={false}
         />
       </SafeAreaView>
+      <LocationPrompt />
     </LinearGradient>
   );
 }

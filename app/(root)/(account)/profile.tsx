@@ -38,7 +38,7 @@ const Profile = () => {
           <View className="w-full flex justify-center items-center my-6 px-4">
 
             {/* User Avatar */}
-            <View className="w-20 h-20 border border-secondary rounded-2xl flex justify-center items-center mt-10">
+            <View className="w-20 h-20 border border-gray-600/50 rounded-2xl flex justify-center items-center mt-10">
               <Image
                 source={images.user}
                 className="w-[90%] h-[90%] rounded-full"

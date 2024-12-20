@@ -7,6 +7,8 @@ export default function Cart() {
       <View>
         <Text>Cart</Text>
       </View>
+
+      <View className="pb-[100px]"/>
     </SafeAreaView>
   );
 }

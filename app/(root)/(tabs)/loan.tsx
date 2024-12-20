@@ -12,7 +12,7 @@ export default function Loan() {
   };
 
   return (
-    <SafeAreaView className="px-4 flex-1 bg-white pb-4">
+    <SafeAreaView className="px-4 flex-1 bg-white">
       {/* Header */}
       <View className="flex flex-row justify-center items-center p-4">
         <Text className="text-xl font-psemibold text-gray-800">dukaa</Text>
@@ -49,7 +49,7 @@ export default function Loan() {
                   } justify-center items-center`}
                 >
                   <MaterialIcons
-                    name ={step.icon}
+                    name ={step.icon as keyof typeof MaterialIcons.glyphMap}
                     size={24}
                     color={index === 0 ? "#FF7A00" : "#D1D5DB"}
                   />
@@ -97,14 +97,14 @@ export default function Loan() {
           </Text>
         </TouchableOpacity>
         <Text className="text-sm text-gray-600 font-pregular mt-2">
-          I consent to dukkaOn requesting my credit information report from
+          I consent to dukaaOn requesting my credit information report from
           credit bureaus.{" "}
           <Text className="text-blue-500 font-pmedium">Know more</Text>
         </Text>
       </View>
 
       {/* Bottom Button */}
-      <View className="mt-6">
+      <View className="mt-6 pb-[100px]">
         <CustomButton
           title="Continue"
           onPress={() => {

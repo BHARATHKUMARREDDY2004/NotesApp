@@ -3,6 +3,6 @@ import { Redirect } from "expo-router";
 
 export default function App() {
   return (
-    <Redirect href="/(auth)/onboarding" />
+    <Redirect href="/(root)/(tabs)/home" />
   );
 }
