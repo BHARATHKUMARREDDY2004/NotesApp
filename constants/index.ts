@@ -14,6 +14,7 @@ import BakeryBiscuits  from '@/assets/images/BakeryBiscuits.png'
 import OilGheeMasala from '@/assets/images/OilGheeMasala.png'
 import DryfriutsCererals from '@/assets/images/DryfriutsCererals.png'
 import user from '@/assets/images/user.png'
+import item from '@/assets/images/item.jpg'
 
 
 
@@ -26,7 +27,8 @@ export const images = {
   BakeryBiscuits,
   OilGheeMasala,
   DryfriutsCererals,
-  user
+  user,
+  item
 };
 
 export const icons = {

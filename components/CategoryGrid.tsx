@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View, Image, FlatList } from "react-native";
+import { Text, View, Image, FlatList, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 
 const CategoryGrid = ({ data }: any) => {
     return (
@@ -8,7 +9,8 @@ const CategoryGrid = ({ data }: any) => {
         keyExtractor={(category, index) => `${category.name}-${index}`}
         numColumns={3}
         renderItem={({ item }) => (
-          <View className="flex-1 items-center m-2">
+          <TouchableOpacity onPress={()=>{router.push("/item-list")}} className="flex-1 items-center m-2">
+          <View>
             <View className="bg-white/40 rounded-xl">
               <Image
                 source={item.image}
@@ -18,6 +20,7 @@ const CategoryGrid = ({ data }: any) => {
             </View>
             <Text className="text-center mt-1 text-xs font-pmedium">{item.name}</Text>
           </View>
+          </TouchableOpacity>
         )}
         columnWrapperStyle={{ justifyContent: "space-between" }}
         showsVerticalScrollIndicator={false}

@@ -38,7 +38,7 @@ const TabLayout = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            flexDirection: "col",
+            flexDirection: "column",
             position: "absolute",
             overflow: "hidden",
             marginHorizontal: 20,
