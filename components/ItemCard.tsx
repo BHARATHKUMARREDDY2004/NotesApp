@@ -36,9 +36,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <Image
           source={images.item}
           className="w-[300px] h-[300px]"
-          resizeMode="contain"
+          resizeMode="cover"
         />
-        <TouchableOpacity
+        {/* <TouchableOpacity
           className="absolute bottom-3 right-3 bg-white px-4 py-2 rounded-full border border-green-600"
           onPress={() => hasMultipleOptions ? setModalVisible(true) : handleAdd(item.units[0], item.unitPrices[0])}
         >
@@ -50,7 +50,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
               </Text>
             )}
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+      <View className="absolute bottom-0 right-3">
+      <TouchableOpacity
+        className="bg-white p-2 rounded-full border border-green-600 w-24"
+        onPress={() => (hasMultipleOptions ? setModalVisible(true) : handleAdd(item.units[0], item.unitPrices[0]))}
+      >
+        <Text className="text-green-600 font-semibold text-center">ADD</Text>
+      </TouchableOpacity>
+      {hasMultipleOptions && (
+        <View className="absolute -bottom-1.5 w-full">
+          <Text className="text-gray-500 text-xs text-center bg-white rounded-xl px-2 mx-auto">
+            {item.units.length} options
+          </Text>
+        </View>
+      )}
+    </View>
       </View>
 
       {/* Content */}
