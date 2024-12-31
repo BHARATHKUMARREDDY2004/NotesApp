@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, Image, FlatList, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 
+
 const CategoryGrid = ({ data }: any) => {
     return (
       <FlatList
@@ -9,7 +10,15 @@ const CategoryGrid = ({ data }: any) => {
         keyExtractor={(category, index) => `${category.name}-${index}`}
         numColumns={3}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={()=>{router.push("/item-list")}} className="flex-1 items-center m-2">
+          <TouchableOpacity onPress={() =>
+            router.push({
+              pathname: "/category",
+              params: {
+                category: item.name,
+                sub_categories: JSON.stringify(item.sub_categories), // Pass sub_categories as a string
+              },
+            })
+          } className="flex-1 items-center m-2">
           <View>
             <View className="bg-white/40 rounded-xl">
               <Image

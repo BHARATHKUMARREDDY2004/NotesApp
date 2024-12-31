@@ -684,3 +684,6 @@ const Data = [
     wholesaler: "Procter & Gamble"
   }
 ];
+
+
+export default Data;

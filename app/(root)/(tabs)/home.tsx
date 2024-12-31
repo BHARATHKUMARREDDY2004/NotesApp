@@ -17,64 +17,500 @@ const categoriesData = [
   {
     title: "Grocery & Kitchen",
     items: [
-      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo" },
-      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala },
-      { name: "Dairy, Bread & Eggs", image: "https://photo" },
-      { name: "Bakery & Biscuits", image: images.BakeryBiscuits },
-      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals },
-      { name: "Chicken, Meat & Fish", image: "https://photo" },
+      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo",
+        sub_categories: [
+          {
+            name: "Vegetables", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fruits", image : "https://veg-Fru-photo"
+          },
+        ]
+       },
+      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala,
+        sub_categories: [
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          },
+
+        ]
+       },
+      { name: "Dairy, Bread & Eggs", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Milk", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Bread & Pav", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Eggs", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Bakery & Biscuits", image: images.BakeryBiscuits,
+        sub_categories: [
+          {
+            name: "Cookies", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Biscuits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Cakes & Biscuits", image : "https://veg-Fru-photo"
+          }
+        ]
+      },
+      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals,
+        sub_categories: [
+          {
+            name: "Dry Fruits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Corn Flacks & Kids Cereals", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Chicken, Meat & Fish", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Chicken", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Meat", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fish", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
   {
     title: "Snacks & Drinks",
     items: [
-      { name: "Chips & Namkeen", image: "https://photo" },
-      { name: "Drinks & Juices", image: "https://photo" },
-      { name: "Tea, Coffee & Milk Drinks", image: "https://photo" },
-      { name: "Instant Food", image: "https://photo" },
-      { name: "Sweets & Chocolates", image: "https://photo" },
-      { name: "Ice Creams & More", image: "https://photo" },
+      { name: "Chips & Namkeen", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Chips", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Namkeen", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "chips and wafers", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "nachos", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "healthy snacks", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Drinks & Juices", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Soft Drinks", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Juices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Energy Drinks", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Tea, Coffee & Milk Drinks", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Tea", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Coffee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Milk Drinks", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Instant Food", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Noodles", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Pasta", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Ready to Eat", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Sweets & Chocolates", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Sweets", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Chocolates", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Ice Creams & More", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Ice Creams", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Frozen Foods", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
   {
     title: "Beauty & Personal Care",
     items: [
-      { name: "Bath & Body", image: "https://photo" },
-      { name: "Hair", image: "https://photo" },
-      { name: "Skin & Face", image: "https://photo" },
+      { name: "Bath & Body", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Soaps", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Shower Gels", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "oral care", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Body Scrubs", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Hair", image: "https://photo",
+        sub_categories: [
+          {
+            name: "shampoo", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Conditioners", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Hair Oils", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Hair Colors", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Skin & Face", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Face Wash", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Face Creams", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Face Scrubs", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "handwash", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
   {
     title: "Grocery & Kitchen",
     items: [
-      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo" },
-      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala },
-      { name: "Dairy, Bread & Eggs", image: "https://photo" },
-      { name: "Bakery & Biscuits", image: images.BakeryBiscuits },
-      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals },
-      { name: "Chicken, Meat & Fish", image: "https://photo" },
+      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo",
+        sub_categories: [
+          {
+            name: "Vegetables", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fruits", image : "https://veg-Fru-photo"
+          },
+        ]
+       },
+      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala,
+        sub_categories: [
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dairy, Bread & Eggs", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Milk", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Bread & Pav", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Eggs", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Bakery & Biscuits", image: images.BakeryBiscuits,
+        sub_categories: [
+          {
+            name: "Cookies", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Biscuits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Cakes & Biscuits", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals,
+        sub_categories: [
+          {
+            name: "Dry Fruits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Corn Flacks & Kids Cereals", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Chicken, Meat & Fish", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Chicken", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Meat", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fish", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
   {
     title: "Grocery & Kitchen",
     items: [
-      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo" },
-      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala },
-      { name: "Dairy, Bread & Eggs", image: "https://photo" },
-      { name: "Bakery & Biscuits", image: images.BakeryBiscuits },
-      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals },
-      { name: "Chicken, Meat & Fish", image: "https://photo" },
+      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo",
+        sub_categories: [
+          {
+            name: "Vegetables", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fruits", image : "https://veg-Fru-photo"
+          },
+        ]
+       },
+      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala,
+        sub_categories: [
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dairy, Bread & Eggs", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Milk", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Bread & Pav", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Eggs", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Bakery & Biscuits", image: images.BakeryBiscuits,
+        sub_categories: [
+          {
+            name: "Cookies", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Biscuits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Cakes & Biscuits", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals,
+        sub_categories: [
+          {
+            name: "Dry Fruits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Corn Flacks & Kids Cereals", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Chicken, Meat & Fish", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Chicken", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Meat", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fish", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
   {
     title: "Grocery & Kitchen",
     items: [
-      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo" },
-      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala },
-      { name: "Dairy, Bread & Eggs", image: "https://photo" },
-      { name: "Bakery & Biscuits", image: images.BakeryBiscuits },
-      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals },
-      { name: "Chicken, Meat & Fish", image: "https://photo" },
+      { name: "Vegetables & Fruits", image: "https://veg-Fru-photo",
+        sub_categories: [
+          {
+            name: "Vegetables", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fruits", image : "https://veg-Fru-photo"
+          },
+        ]
+       },
+      { name: "Oil, Ghee & Masala", image: images.OilGheeMasala,
+        sub_categories: [
+          {
+            name: "oil", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "ghee", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Powdered Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Whole Spices", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Salt, Sugar & Jaggery", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dairy, Bread & Eggs", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Milk", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Bread & Pav", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Eggs", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Bakery & Biscuits", image: images.BakeryBiscuits,
+        sub_categories: [
+          {
+            name: "Cookies", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Biscuits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Cakes & Biscuits", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Dry Fruits & Cereals", image: images.DryfriutsCererals,
+        sub_categories: [
+          {
+            name: "Dry Fruits", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Corn Flacks & Kids Cereals", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
+      { name: "Chicken, Meat & Fish", image: "https://photo",
+        sub_categories: [
+          {
+            name: "Chicken", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Meat", image : "https://veg-Fru-photo"
+          },
+          {
+            name: "Fish", image : "https://veg-Fru-photo"
+          }
+        ]
+       },
     ],
   },
 ];
@@ -130,12 +566,12 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    clearLocationData()
-    if (!userLocation) {
-      toggleLocationModal();
-    }
-  }, []);
+  // useEffect(() => {
+  //   clearLocationData()
+  //   if (!userLocation) {
+  //     toggleLocationModal();
+  //   }
+  // }, []);
 
   return (
     <LinearGradient
