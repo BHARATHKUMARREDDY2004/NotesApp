@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Modal, FlatList } from "react-native";
 import { images } from "@/constants";
+import { router } from "expo-router";
 
 type Item = {
   id: string;
@@ -33,9 +34,9 @@ const ItemCard = ({ item }: ItemCardProps) => {
   const discount = Math.round((1 - item.unitPrices[0] / item.price) * 100);
 
   return (
-    <View className="bg-white/80 rounded-2xl overflow-hidden w-[48%] m-1">
+    <View className="bg-white/70 rounded-2xl overflow-hidden w-[48%] m-1">
       {/* Image and Add Button Overlay */}
-      <View className="relative">
+      <TouchableOpacity className="relative" onPress={()=> router.push('/item-info')}>
         <Image
           source={images.item}
           className="w-full h-40 rounded-2xl"
@@ -62,10 +63,10 @@ const ItemCard = ({ item }: ItemCardProps) => {
             </View>
           )}
         </View>
-      </View>
+      </TouchableOpacity>
 
       {/* Content */}
-      <View className="px-2 py-3 flex-col">
+      <TouchableOpacity className="px-2 py-3 flex-col" onPress={()=> router.push('/item-info')}>
         {/* Weight */}
         <Text className="text-gray-500 text-sm mb-1">{item.units[0]}</Text>
 
@@ -80,14 +81,14 @@ const ItemCard = ({ item }: ItemCardProps) => {
         {/* Pricing */}
         <View className="flex-row items-baseline gap-1">
           <Text className="text-sm text-gray-500">MRP</Text>
-          <Text className="text-md font-psemibold text-gray-800">₹ {item.unitPrices[0]}</Text>
+          <Text className="text-md font-semibold text-gray-800">₹{item.unitPrices[0]}</Text>
         </View>
 
         {/* Delivery Time */}
         <View className="flex-row items-center mb-2">
           <Text className="text-gray-500 text-sm">Min Order : {item.minQty} Units</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       {/* Modal for Multiple Options */}
       <Modal visible={modalVisible} transparent animationType="slide">

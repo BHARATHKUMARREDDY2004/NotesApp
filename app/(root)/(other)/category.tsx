@@ -11,6 +11,7 @@ import {
 import { useLocalSearchParams, router } from "expo-router";
 import { useStore } from "@/store";
 import ItemCard from "@/components/ItemCard";
+import SearchInput from "@/components/SearchInput";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -21,6 +22,7 @@ export default function Category() {
 
   // Add state for selected subcategory
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
 
   // Filter products based on selected category or show all if none selected
   const categoryProducts = data.filter((product) =>
@@ -35,14 +37,26 @@ export default function Category() {
   return (
     <SafeAreaView className="flex-1 bg-orange-100 pt-10">
       {/* Header */}
-      <View className="flex-row items-center justify-between px-4 py-3 border-b border-gray-200/50">
-        <TouchableOpacity onPress={() => router.back()} className="p-2">
-          <Ionicons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text className="text-lg font-semibold flex-1 ml-4">{category}</Text>
-        <TouchableOpacity className="p-2">
-        <Ionicons name="search" size={24} color="#000" />
-        </TouchableOpacity>
+      <View className="flex-col border-b border-gray-200/50">
+        {isSearchVisible && (
+          <View className="px-2">
+            <SearchInput />
+          </View>
+        )}
+        <View className="flex-row items-center justify-between px-4 py-3">
+          <TouchableOpacity onPress={() => router.back()} className="p-2">
+            <Ionicons name="arrow-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text className="text-lg font-semibold flex-1 ml-4">{category}</Text>
+          {!isSearchVisible && (
+            <TouchableOpacity
+              className="p-2"
+              onPress={() => setIsSearchVisible(!isSearchVisible)}
+            >
+              <Ionicons name="search" size={24} color="#000" />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
 
       <View className="flex-row flex-1">
@@ -101,7 +115,7 @@ export default function Category() {
                 No products found.
               </Text>
               <Text className="text-gray-400 text-sm">
-                Try selecting a different subcategory.
+                Try selecting a different category.
               </Text>
             </View>
           ) : (

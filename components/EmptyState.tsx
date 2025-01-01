@@ -22,7 +22,7 @@ const EmptyState = ({ title, subtitle }: EmptyStateProps) => {
 
       <CustomButton
         title="Back to Explore"
-        onPress={() => router.push("/home")}
+        onPress={() => router.back()}
         textStyle="text-white"
         className="w-full my-5 bg-orange"
       />
