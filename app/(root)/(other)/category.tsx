@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  StatusBar
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { useStore } from "@/store";
@@ -131,6 +132,7 @@ export default function Category() {
           )}
         </View>
       </View>
+      <StatusBar backgroundColor="transparent" barStyle="light-content" />
     </SafeAreaView>
   );
 }

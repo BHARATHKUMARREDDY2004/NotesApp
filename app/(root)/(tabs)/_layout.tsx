@@ -111,7 +111,7 @@ const TabLayout = () => {
                 <Tabs.Screen
           name="cart"
           options={{
-            title: "Cart",
+            title: "cart",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon

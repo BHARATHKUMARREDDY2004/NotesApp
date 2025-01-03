@@ -6,6 +6,7 @@ export default function Layout() {
       <Stack.Screen name="category" options={{ headerShown: false }} />
       <Stack.Screen name="item-info" options={{ headerShown: false }} />
       <Stack.Screen name="item-list" options={{ headerShown: false }} />
+      <Stack.Screen name="payment" options={{ headerShown: false }} />
     </Stack>
   );
 }
