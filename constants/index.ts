@@ -15,6 +15,7 @@ import OilGheeMasala from '@/assets/images/OilGheeMasala.png'
 import DryfriutsCererals from '@/assets/images/DryfriutsCererals.png'
 import user from '@/assets/images/user.png'
 import item from '@/assets/images/item.jpg'
+import emptycart from '@/assets/images/emptycart.png'
 
 
 
@@ -28,7 +29,8 @@ export const images = {
   OilGheeMasala,
   DryfriutsCererals,
   user,
-  item
+  item,
+  emptycart
 };
 
 export const icons = {

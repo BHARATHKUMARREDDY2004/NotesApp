@@ -99,7 +99,7 @@ export default function CartItem({ item }: CartItemProps) {
         className="w-28 h-28 rounded-2xl mr-4"
       />
       <View className="flex-1 space-y-1">
-        <Text className="text-xl font-psemibold text-gray-600">{item.name}</Text>
+        <Text className="text-xl font-psemibold text-gray-800">{item.name}</Text>
         <Text className="text-gray-500 text-sm text-psemibold">{item.unit}</Text>
         <View className="flex-row items-center justify-between mt-2">
           <Text className="text-orange-500 font-bold text-lg">₹{item.price}</Text>

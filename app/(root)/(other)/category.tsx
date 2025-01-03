@@ -48,7 +48,7 @@ export default function Category() {
           <TouchableOpacity onPress={() => router.back()} className="p-2">
             <Ionicons name="arrow-back" size={24} color="#000" />
           </TouchableOpacity>
-          <Text className="text-lg font-semibold flex-1 ml-4">{category}</Text>
+          <Text className="text-lg font-psemibold flex-1 ml-4">{category}</Text>
           {!isSearchVisible && (
             <TouchableOpacity
               className="p-2"

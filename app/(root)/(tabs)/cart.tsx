@@ -44,10 +44,14 @@
 
 
 import React from 'react';
-import { SafeAreaView, ScrollView, View, Text, StatusBar } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StatusBar, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import {router} from 'expo-router';
 import { useStore } from '@/store';
 import CartItem from '@/components/CartItem';
 import PaymentFooter from '@/components/PaymentFooter';
+import EmptyState from '@/components/EmptyState';
+import {images} from '@/constants';
 
 export default function Cart() {
   const cart = useStore((state) => state.cart);
@@ -71,14 +75,24 @@ export default function Cart() {
   return (
     <SafeAreaView className="flex-1 bg-orange-100">
       <ScrollView className="flex-1">
-        <View className="p-4">
-          <Text className="text-2xl font-bold mb-4">Your Cart</Text>
+        <View className="p-2">
+        <View className="flex-row items-center justify-between p-4">
+          <TouchableOpacity onPress={() => router.back()} className="p-2">
+            <Ionicons name="arrow-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text className="text-xl font-psemibold flex-1 ml-4">Your Cart</Text>
+        </View>
           {cart.length > 0 ? (
             cart.map((item) => (
               <CartItem key={`${item.id}-${item.unit}`} item={item} />
             ))
           ) : (
-            <Text className="text-gray-500">Your cart is empty</Text>
+            
+            <EmptyState
+            title="Your cart is empty"
+            subtitle="Looks like you haven't added anything to your cart yet."
+            image={images.emptycart}
+          />
           )}
         </View>
         {cart.length > 0 && (

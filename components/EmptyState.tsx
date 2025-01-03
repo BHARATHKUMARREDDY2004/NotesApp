@@ -6,11 +6,11 @@ import CustomButton from "./CustomButton";
 
 import { EmptyStateProps } from "@/types/type";
 
-const EmptyState = ({ title, subtitle }: EmptyStateProps) => {
+const EmptyState = ({ title, subtitle, image }: EmptyStateProps) => {
   return (
     <View className="flex justify-center items-center px-4 py-[20%]">
       <Image
-        source={images.empty}
+        source={image || images.empty}
         resizeMode="contain"
         className="w-[270px] h-[216px]"
       />

@@ -1,4 +1,4 @@
-import { TextInputProps, TouchableOpacityProps } from "react-native";
+import { TextInputProps, TouchableOpacityProps, ImageProps } from "react-native";
 
 declare interface Driver {
   id: number;
@@ -160,6 +160,7 @@ declare interface TabIconProps {
 declare interface EmptyStateProps {
   title: string;
   subtitle: string;
+  image: ImageProps;
 }
 
 declare interface SearchInputProps {

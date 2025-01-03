@@ -8,24 +8,24 @@ export default function PaymentFooter({
   buttonTitle,
 }: any) {
   return (
-    <View className="p-4 bg-orange-100">
+    <View className="p-4">
       {/* Price Details Section */}
-      <View className="mb-2 bg-gray-800 rounded-lg px-4 py-2">
+      <View className="mb-2 bg-white/70 rounded-lg px-4 py-2">
         <View className="flex-row justify-between mb-1">
-          <Text className="text-gray-100">MRP ({priceDetails.itemCount} items):</Text>
-          <Text className="text-gray-100">₹{priceDetails.MRP.toFixed(2)}</Text>
+          <Text className="text-gray-800 font-pmedium">MRP ({priceDetails.itemCount} items):</Text>
+          <Text className="text-gray-800">{priceDetails.MRP.toFixed(2)}</Text>
         </View>
         <View className="flex-row justify-between mb-1">
-          <Text className="text-gray-100">Product Discount:</Text>
+          <Text className="text-gray-800 font-pmedium">Product Discount:</Text>
           <Text className="text-green-400">- ₹{priceDetails.discount.toFixed(2)}</Text>
         </View>
         <View className="flex-row justify-between mb-1">
-          <Text className="text-gray-100">Delivery Fee:</Text>
-          <Text className="text-gray-100">₹{priceDetails.deliveryFee.toFixed(2)}</Text>
+          <Text className="text-gray-800 font-pmedium">Delivery Fee:</Text>
+          <Text className="text-gray-800">₹{priceDetails.deliveryFee.toFixed(2)}</Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-gray-100">Total Amount:</Text>
-          <Text className="text-gray-100">₹{priceDetails.totalAmount.toFixed(2)}</Text>
+          <Text className="text-gray-800 font-pmedium">Total Amount:</Text>
+          <Text className="text-gray-800">₹{priceDetails.totalAmount.toFixed(2)}</Text>
         </View>
       </View>
 

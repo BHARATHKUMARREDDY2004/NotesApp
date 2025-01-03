@@ -5,6 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import EmptyState from "@/components/EmptyState";
 import SearchInput from "@/components/SearchInput";
+import { images } from "@/constants";
 
 const Search = () => {
   const { query } = useLocalSearchParams();
@@ -43,6 +44,7 @@ const Search = () => {
             <EmptyState
               title="No Products Found"
               subtitle="Try searching for something else."
+              image={images.empty}
             />
           )}
         />
