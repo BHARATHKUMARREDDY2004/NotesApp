@@ -127,8 +127,16 @@
 // export default ItemCard;
 
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TouchableOpacity, Modal, FlatList, StatusBar } from "react-native";
-import { useStore } from '@/store'; // Import your Zustand store
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Modal,
+  FlatList,
+  StatusBar,
+} from "react-native";
+import { useStore } from "@/store"; // Import your Zustand store
 import { router } from "expo-router";
 import { images } from "@/constants";
 
@@ -157,7 +165,14 @@ const ItemCard = ({ item }: ItemCardProps) => {
   const { addToCart } = useStore(); // Accessing addToCart from the store
 
   const handleAdd = (unit: string, price: number) => {
-    addToCart({ id: item.id, name: item.name, unit, quantity: 1, price, image: item.images[0] });
+    addToCart({
+      id: item.id,
+      name: item.name,
+      unit,
+      quantity: 1,
+      price,
+      image: item.images[0],
+    });
     setModalVisible(false); // Close modal after adding item
   };
 
@@ -167,13 +182,23 @@ const ItemCard = ({ item }: ItemCardProps) => {
   return (
     <View className="bg-white/70 rounded-2xl overflow-hidden w-[48%] m-1">
       {/* Image and Add Button Overlay */}
-      <TouchableOpacity className="relative" onPress={() => router.push('/item-info')}>
+      <TouchableOpacity
+        className="relative"
+        onPress={() =>
+          router.push({
+            pathname: "/item-info",
+            params: {
+              item: JSON.stringify(item), // Pass item as a string
+            },
+          })
+        }
+      >
         <Image
           source={images.item}
           className="w-full h-40 rounded-2xl"
           resizeMode="cover"
         />
-        <View className="absolute bottom-0 right-2">
+        <View className="absolute bottom-0 right-0 pl-3 pt-3 rounded-2xl">
           <TouchableOpacity
             className="bg-white p-2 rounded-full border border-green-600 w-24"
             onPress={() =>
@@ -182,20 +207,33 @@ const ItemCard = ({ item }: ItemCardProps) => {
                 : handleAdd(item.units[0], item.unitPrices[0])
             }
           >
-            <Text className="text-green-600 font-semibold text-center">ADD</Text>
+            <Text className="text-green-600 font-semibold text-center">
+              ADD
+            </Text>
+
+            {hasMultipleOptions && (
+              <View className="absolute -bottom-1.5 right-3">
+                <Text className="text-gray-500 text-xs text-center bg-white rounded-xl px-2">
+                  {item.units.length} options
+                </Text>
+              </View>
+            )}
           </TouchableOpacity>
-          {hasMultipleOptions && (
-            <View className="absolute -bottom-1.5 w-full">
-              <Text className="text-gray-500 text-xs text-center bg-white rounded-xl px-2 mx-auto">
-                {item.units.length} options
-              </Text>
-            </View>
-          )}
         </View>
       </TouchableOpacity>
 
       {/* Content */}
-      <TouchableOpacity className="px-2 py-3 flex-col" onPress={() => router.push('/item-info')}>
+      <TouchableOpacity
+        className="px-2 py-3 flex-col"
+        onPress={() =>
+          router.push({
+            pathname: "/item-info",
+            params: {
+              item: JSON.stringify(item), // Pass item as a string
+            },
+          })
+        }
+      >
         {/* Weight */}
         <Text className="text-gray-500 text-sm mb-1">{item.units[0]}</Text>
 
@@ -204,24 +242,33 @@ const ItemCard = ({ item }: ItemCardProps) => {
           numberOfLines={2}
           ellipsizeMode="tail"
         >
-          {item.name.length > 40 ? `${item.name.substring(0, 40)}...` : item.name}
+          {item.name.length > 40
+            ? `${item.name.substring(0, 40)}...`
+            : item.name}
         </Text>
 
         {/* Pricing */}
         <View className="flex-row items-baseline gap-1">
           <Text className="text-sm text-gray-500">MRP</Text>
-          <Text className="text-md font-semibold text-gray-800">₹{item.unitPrices[0]}</Text>
+          <Text className="text-md font-semibold text-gray-800">
+            ₹{item.unitPrices[0]}
+          </Text>
         </View>
 
         {/* Delivery Time */}
         <View className="flex-row items-center mb-2">
-          <Text className="text-gray-500 text-sm">Min Order : {item.minQty} Units</Text>
+          <Text className="text-gray-500 text-sm">
+            Min Order : {item.minQty} Units
+          </Text>
         </View>
       </TouchableOpacity>
 
       {/* Modal for Multiple Options */}
       <Modal visible={modalVisible} transparent animationType="slide">
-         <StatusBar backgroundColor="rgba(0, 0, 0, 0.5)" barStyle="light-content" />
+        <StatusBar
+          backgroundColor="rgba(0, 0, 0, 0.5)"
+          barStyle="light-content"
+        />
         <View className="flex-1 justify-center items-center bg-black/50">
           <View className="bg-white rounded-lg w-4/5 p-4">
             <Text className="text-lg font-pbold mb-3">{item.name}</Text>

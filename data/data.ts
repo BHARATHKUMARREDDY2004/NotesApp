@@ -5,11 +5,11 @@ const Data = [
     name: "Fortune Soya Health Refined Oil",
     category: "oil",
     minQty: 5,
-    units: ["1 liter", "5 liters"],
-    unitPrices: [200.00, 950.00],
+    units: ["1 liter", "5 liters", "15 liters", "50 liters", "100 liters", "200 liters", "500 liters", "1000 liters"],
+    unitPrices: [200.00, 950.00, 2800.00, 9000.00, 18000.00, 35000.00, 85000.00, 170000.00],
     information: ["Shelf Life", "Disclaimer"],
     infoDescriptions: ["6 Months", "For cooking purposes only"],
-    images: ["https://oil-photo1", "https://oil-photo2"],
+    images: ["https://shorturl.at/yXIR9", "https://shorturl.at/G9JAR", "https://shorturl.at/yXIR9", "https://shorturl.at/G9JAR"],
     wholesaler: "Fortune"
   },
   {
