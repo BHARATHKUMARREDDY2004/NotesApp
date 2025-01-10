@@ -126,7 +126,7 @@
 
 // export default ItemCard;
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -139,6 +139,7 @@ import {
 import { useStore } from "@/store"; // Import your Zustand store
 import { router } from "expo-router";
 import { images } from "@/constants";
+import { Ionicons } from "@expo/vector-icons";
 
 type Item = {
   id: string;
@@ -162,9 +163,20 @@ const ItemCard = ({ item }: ItemCardProps) => {
   const [modalVisible, setModalVisible] = useState(false);
   const hasMultipleOptions = item.units.length > 1;
 
-  const { addToCart } = useStore(); // Accessing addToCart from the store
+  const { cart, addToCart, removeFromCart, updateCartItemQuantity } =
+    useStore(); // Access store actions and state
 
-  const handleAdd = (unit: string, price: number) => {
+  const cartItems = cart.filter((cartItem) => cartItem.id === item.id);
+
+  const totalQuantity = cartItems.reduce(
+    (sum, cartItem) => sum + cartItem.quantity,
+    0
+  );
+
+  const findCartItem = (unit: string) =>
+    cartItems.find((cartItem) => cartItem.unit === unit);
+
+  const handleAdd = (unit: string, price: number) =>
     addToCart({
       id: item.id,
       name: item.name,
@@ -173,23 +185,29 @@ const ItemCard = ({ item }: ItemCardProps) => {
       price,
       image: item.images[0],
     });
-    setModalVisible(false); // Close modal after adding item
-  };
 
-  // Calculate discount percentage
-  const discount = Math.round((1 - item.unitPrices[0] / item.price) * 100);
+  const handleQuantityChange = (unit: string, delta: number) => {
+    const cartItem = findCartItem(unit);
+    if (cartItem) {
+      const newQuantity = cartItem.quantity + delta;
+      if (newQuantity > 0) {
+        updateCartItemQuantity(item.id, unit, newQuantity);
+      } else {
+        removeFromCart(item.id, unit);
+      }
+    } else if (delta > 0) {
+      handleAdd(unit, item.unitPrices[item.units.indexOf(unit)]);
+    }
+  };
 
   return (
     <View className="bg-white/70 rounded-2xl overflow-hidden w-[48%] m-1">
-      {/* Image and Add Button Overlay */}
       <TouchableOpacity
         className="relative"
         onPress={() =>
           router.push({
             pathname: "/item-info",
-            params: {
-              item: JSON.stringify(item), // Pass item as a string
-            },
+            params: { item: JSON.stringify(item) },
           })
         }
       >
@@ -199,26 +217,53 @@ const ItemCard = ({ item }: ItemCardProps) => {
           resizeMode="cover"
         />
         <View className="absolute bottom-0 right-0 pl-3 pt-3 rounded-2xl">
-          <TouchableOpacity
-            className="bg-white p-2 rounded-full border border-green-600 w-24"
-            onPress={() =>
-              hasMultipleOptions
-                ? setModalVisible(true)
-                : handleAdd(item.units[0], item.unitPrices[0])
-            }
-          >
-            <Text className="text-green-600 font-semibold text-center">
-              ADD
-            </Text>
-
-            {hasMultipleOptions && (
-              <View className="absolute -bottom-1.5 right-3">
-                <Text className="text-gray-500 text-xs text-center bg-white rounded-xl px-2">
+          {totalQuantity > 0 ? (
+            <View className="flex-row items-center bg-orange-100 p-1 rounded-xl border border-orange">
+              <TouchableOpacity
+                onPress={() =>
+                  item.units.length > 1
+                    ? setModalVisible(true)
+                    : handleQuantityChange(item.units[0], -1)
+                }
+                className="w-8 h-8 items-center justify-center"
+              >
+                <Ionicons name="remove" size={24} color="#FF7A00" />
+              </TouchableOpacity>
+              <Text className="mx-2 text-lg font-psemibold text-orange-500">
+                {item.units.length > 1
+                  ? totalQuantity
+                  : cartItems[0]?.quantity || 0}
+              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  item.units.length > 1
+                    ? setModalVisible(true)
+                    : handleQuantityChange(item.units[0], 1)
+                }
+                className="w-8 h-8 items-center justify-center"
+              >
+                <Ionicons name="add" size={24} color="#FF7A00" />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <TouchableOpacity
+              className="bg-orange-100 p-2 rounded-xl border border-orange w-24"
+              onPress={() =>
+                item.units.length > 1
+                  ? setModalVisible(true)
+                  : handleAdd(item.units[0], item.unitPrices[0])
+              }
+            >
+              <Text className="text-orange font-semibold text-center">ADD</Text>
+              {hasMultipleOptions && (
+              <View className="absolute -bottom-1.5 right-3 bg-orange-100 rounded-xl">
+                <Text className="text-gray-500 text-xs text-center rounded-xl px-2">
                   {item.units.length} options
                 </Text>
               </View>
             )}
-          </TouchableOpacity>
+            </TouchableOpacity>
+          )}
         </View>
       </TouchableOpacity>
 
@@ -228,37 +273,27 @@ const ItemCard = ({ item }: ItemCardProps) => {
         onPress={() =>
           router.push({
             pathname: "/item-info",
-            params: {
-              item: JSON.stringify(item), // Pass item as a string
-            },
+            params: { item: JSON.stringify(item) },
           })
         }
       >
-        {/* Weight */}
-        <Text className="text-gray-500 text-sm mb-1">{item.units[0]}</Text>
-
         <Text
           className="text-base font-psemibold text-gray-800 text-balance"
           numberOfLines={2}
-          ellipsizeMode="tail"
         >
           {item.name.length > 40
             ? `${item.name.substring(0, 40)}...`
             : item.name}
         </Text>
-
-        {/* Pricing */}
         <View className="flex-row items-baseline gap-1">
-          <Text className="text-sm text-gray-500">MRP</Text>
+          <Text className="text-sm text-gray-500 font-pregular">MRP</Text>
           <Text className="text-md font-semibold text-gray-800">
             ₹{item.unitPrices[0]}
           </Text>
         </View>
-
-        {/* Delivery Time */}
         <View className="flex-row items-center mb-2">
-          <Text className="text-gray-500 text-sm">
-            Min Order : {item.minQty} Units
+          <Text className="text-gray-500 text-sm font-pregular">
+            Min Order: {item.minQty} Units
           </Text>
         </View>
       </TouchableOpacity>
@@ -277,17 +312,52 @@ const ItemCard = ({ item }: ItemCardProps) => {
                 key: unit,
                 price: item.unitPrices[index],
               }))}
-              renderItem={({ item: option }) => (
-                <TouchableOpacity
-                  className="py-3 px-4 border-b border-gray-200"
-                  onPress={() => handleAdd(option.key, option.price)}
-                >
-                  <Text className="text-base">
-                    {option.key} - ₹{option.price}
-                  </Text>
-                </TouchableOpacity>
-              )}
+              renderItem={({ item: option }) => {
+                const cartItem = findCartItem(option.key);
+
+                return (
+                  <View className="py-3 px-4 border-b border-gray-200 flex-row justify-between items-center">
+                    <Text className="text-base font-pregular w-3/4">
+                      {option.key} - ₹{option.price}
+                    </Text>
+                    <View className="w-1/4 items-center">
+                      {cartItem ? (
+                        <View className="flex-row items-center">
+                          <TouchableOpacity
+                            onPress={() =>
+                              handleQuantityChange(option.key, -1)
+                            }
+                            className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
+                          >
+                            <Ionicons name="remove" size={24} color="#FF7A00" />
+                          </TouchableOpacity>
+                          <Text className="mx-2 text-lg font-psemibold text-orange-500">
+                            {cartItem.quantity}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() =>
+                              handleQuantityChange(option.key, 1)
+                            }
+                            className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
+                          >
+                            <Ionicons name="add" size={24} color="#FF7A00" />
+                          </TouchableOpacity>
+                        </View>
+                      ) : (
+                        <TouchableOpacity
+                          onPress={() => handleAdd(option.key, option.price)}
+                          className="bg-orange py-1 px-4 rounded-lg"
+                        >
+                          <Text className="text-white font-psemibold">Add</Text>
+                        </TouchableOpacity>
+                      )}
+                    </View>
+                  </View>
+                );
+              }}
+              keyExtractor={(item) => item.key}
             />
+
             <TouchableOpacity
               className="mt-4 py-3 bg-gray-100 rounded-lg"
               onPress={() => setModalVisible(false)}

@@ -59,11 +59,11 @@
 //   );
 // }
 
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useStore } from '@/store';
+import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { useStore } from "@/store";
 import { images } from "@/constants";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 interface CartItemProps {
   item: {
@@ -77,7 +77,9 @@ interface CartItemProps {
 }
 
 export default function CartItem({ item }: CartItemProps) {
-  const updateCartItemQuantity = useStore((state) => state.updateCartItemQuantity);
+  const updateCartItemQuantity = useStore(
+    (state) => state.updateCartItemQuantity
+  );
   const removeFromCart = useStore((state) => state.removeFromCart);
 
   const handleIncrement = () => {
@@ -94,33 +96,37 @@ export default function CartItem({ item }: CartItemProps) {
 
   return (
     <View className="flex-row items-center bg-white/70 p-4 rounded-3xl mb-4">
-      <Image
-        source={images.item}
-        className="w-28 h-28 rounded-2xl mr-4"
-      />
+      <Image source={images.item} className="w-28 h-28 rounded-2xl mr-4" />
       <View className="flex-1 space-y-1">
-        <Text className="text-xl font-psemibold text-gray-800">{item.name}</Text>
-        <Text className="text-gray-500 text-sm text-psemibold">{item.unit}</Text>
-        <View className="flex-row items-center justify-between mt-2">
-          <Text className="text-orange-500 font-bold text-lg">₹{item.price}</Text>
+        <Text className="text-xl font-psemibold text-gray-800">
+          {item.name}
+        </Text>
+        <Text className="text-gray-500 text-sm text-psemibold">
+          {item.unit}
+        </Text>
+        <View className="flex-row items-center justify-between">
+          <Text className="text-orange-500 font-bold text-lg">
+            ₹{item.price}
+          </Text>
         </View>
       </View>
       <View className="absolute bottom-4 right-4 flex-row items-center rounded-xl px-2 py-1">
-  <TouchableOpacity
-    onPress={handleDecrement}
-    className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
-  >
-    <Ionicons name="remove" size={24} color="#FF7A00" />
-  </TouchableOpacity>
-  <Text className="mx-3 text-lg font-psemibold text-orange-500">{item.quantity}</Text>
-  <TouchableOpacity
-    onPress={handleIncrement}
-    className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
-  >
-    <Ionicons name="add" size={24} color="#FF7A00" />
-  </TouchableOpacity>
-</View>
+        <TouchableOpacity
+          onPress={handleDecrement}
+          className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
+        >
+          <Ionicons name="remove" size={24} color="#FF7A00" />
+        </TouchableOpacity>
+        <Text className="mx-3 text-lg font-psemibold text-orange-500">
+          {item.quantity}
+        </Text>
+        <TouchableOpacity
+          onPress={handleIncrement}
+          className="w-8 h-8 rounded-lg items-center justify-center bg-orange-200"
+        >
+          <Ionicons name="add" size={24} color="#FF7A00" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
-
