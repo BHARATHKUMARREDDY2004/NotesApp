@@ -181,7 +181,7 @@ const ItemCard = ({ item }: ItemCardProps) => {
       id: item.id,
       name: item.name,
       unit,
-      quantity: 1,
+      quantity: item.minQty,
       price,
       image: item.images[0],
     });
@@ -229,7 +229,7 @@ const ItemCard = ({ item }: ItemCardProps) => {
               >
                 <Ionicons name="remove" size={24} color="#FF7A00" />
               </TouchableOpacity>
-              <Text className="mx-2 text-lg font-psemibold text-orange-500">
+              <Text className="mx-2 text-lg font-psemibold text-orange-500 text-center">
                 {item.units.length > 1
                   ? totalQuantity
                   : cartItems[0]?.quantity || 0}
@@ -306,7 +306,7 @@ const ItemCard = ({ item }: ItemCardProps) => {
         />
         <View className="flex-1 justify-center items-center bg-black/50">
           <View className="bg-white rounded-lg w-4/5 p-4">
-            <Text className="text-lg font-pbold mb-3">{item.name}</Text>
+            <Text className="text-lg font-pbold mb-3 text-gray-800">{item.name}</Text>
             <FlatList
               data={item.units.map((unit, index) => ({
                 key: unit,
@@ -359,10 +359,10 @@ const ItemCard = ({ item }: ItemCardProps) => {
             />
 
             <TouchableOpacity
-              className="mt-4 py-3 bg-gray-100 rounded-lg"
+              className="mt-4 py-3 bg-orange-200 rounded-lg"
               onPress={() => setModalVisible(false)}
             >
-              <Text className="text-center font-pmedium">Cancel</Text>
+              <Text className="text-center font-pmedium text-gray-800">Cancel</Text>
             </TouchableOpacity>
           </View>
         </View>

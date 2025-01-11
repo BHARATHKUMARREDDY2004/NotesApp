@@ -319,7 +319,7 @@ const ItemInfo = () => {
       id: itemData.id,
       name: itemData.name,
       unit: selectedUnit,
-      quantity: 1,
+      quantity: itemData.minQty,
       price: selectedUnitPrice,
       image: itemData.images[0],
     });
