@@ -1,6 +1,26 @@
-import { TextInput, View, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
+import { ComponentProps } from "react";
+import {
+  TextInput,
+  TextInputProps,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { InputFieldProps } from "@/types/type";
+
+type IoniconName = ComponentProps<typeof Ionicons>["name"];
+
+interface InputFieldProps extends TextInputProps {
+  label?: string;
+  icon?: IoniconName;
+  secureTextEntry?: boolean;
+  containerStyle?: string;
+  inputStyle?: string;
+  labelStyle?: string;
+}
 
 const InputField = ({
   label,

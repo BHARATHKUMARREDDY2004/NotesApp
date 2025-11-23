@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DukaaOn",
-    "slug": "DukaaOn",
+    "name": "Notes",
+    "slug": "Notes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -27,7 +27,14 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Notes to access your gallery so you can attach images to notes.",
+          "cameraPermission": "Allow Notes to use the camera when capturing images for notes."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

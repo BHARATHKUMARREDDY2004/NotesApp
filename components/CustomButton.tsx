@@ -1,5 +1,12 @@
-import { TouchableOpacity, Text } from "react-native";
-import { ButtonProps } from "@/types/type";
+import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
+
+interface CustomButtonProps extends TouchableOpacityProps {
+  title: string;
+  textStyle?: string;
+  IconLeft?: React.ComponentType<any>;
+  IconRight?: React.ComponentType<any>;
+  className?: string;
+}
 
 const CustomButton = ({
   onPress,
@@ -9,7 +16,7 @@ const CustomButton = ({
   IconRight,
   className,
   ...props
-}: ButtonProps) => {
+}: CustomButtonProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}

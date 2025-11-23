@@ -1,10 +1,14 @@
 import { router } from "expo-router";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ImageProps } from "react-native";
 
 import { images } from "@/constants";
 import CustomButton from "./CustomButton";
 
-import { EmptyStateProps } from "@/types/type";
+interface EmptyStateProps {
+  title: string;
+  subtitle: string;
+  image?: ImageProps["source"];
+}
 
 const EmptyState = ({ title, subtitle, image }: EmptyStateProps) => {
   return (

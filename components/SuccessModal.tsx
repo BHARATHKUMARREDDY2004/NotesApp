@@ -1,7 +1,11 @@
 import { View, Text, Modal, Image, StatusBar } from 'react-native'
 import CustomButton from './CustomButton'
-import { SuccessModalProps } from "@/types/type";
 import { icons } from '@/constants'
+
+interface SuccessModalProps {
+  visible: boolean;
+  onClose: () => void;
+}
 
 export default function SuccessModal({ visible, onClose }: SuccessModalProps) {
   return (

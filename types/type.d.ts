@@ -1,168 +1,28 @@
-import { TextInputProps, TouchableOpacityProps, ImageProps } from "react-native";
-
-declare interface Driver {
-  id: number;
-  first_name: string;
-  last_name: string;
-  profile_image_url: string;
-  car_image_url: string;
-  car_seats: number;
-  rating: number;
+declare interface StoredUser {
+  username: string;
+  pin: string;
+  createdAt: string;
 }
 
-declare interface MarkerData {
-  latitude: number;
-  longitude: number;
-  id: number;
+declare interface StoredNote {
+  id: string;
   title: string;
-  profile_image_url: string;
-  car_image_url: string;
-  car_seats: number;
-  rating: number;
-  first_name: string;
-  last_name: string;
-  time?: number;
-  price?: string;
+  body: string;
+  imageUri?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-declare interface MapProps {
-  destinationLatitude?: number;
-  destinationLongitude?: number;
-  onDriverTimesCalculated?: (driversWithTimes: MarkerData[]) => void;
-  selectedDriver?: number | null;
-  onMapReady?: () => void;
+declare type SortKey = "updatedAt" | "title";
+declare type SortDirection = "asc" | "desc";
+
+declare interface SortOption {
+  key: SortKey;
+  direction: SortDirection;
 }
 
-declare interface Ride {
-  origin_address: string;
-  destination_address: string;
-  origin_latitude: number;
-  origin_longitude: number;
-  destination_latitude: number;
-  destination_longitude: number;
-  ride_time: number;
-  fare_price: number;
-  payment_status: string;
-  driver_id: number;
-  user_id: string;
-  created_at: string;
-  driver: {
-    first_name: string;
-    last_name: string;
-    car_seats: number;
-  };
-}
-
-declare interface ButtonProps extends TouchableOpacityProps {
+declare interface NoteFormValues {
   title: string;
-  textStyle?: string;
-  IconLeft?: React.ComponentType<any>;
-  IconRight?: React.ComponentType<any>;
-  className?: string;
-}
-
-declare interface GoogleInputProps {
-  icon?: string;
-  initialLocation?: string;
-  containerStyle?: string;
-  textInputBackgroundColor?: string;
-  handlePress: ({
-    latitude,
-    longitude,
-    address,
-  }: {
-    latitude: number;
-    longitude: number;
-    address: string;
-  }) => void;
-}
-
-declare interface InputFieldProps extends TextInputProps {
-  label: string;
-  icon?: any;
-  secureTextEntry?: boolean;
-  labelStyle?: string;
-  containerStyle?: string;
-  inputStyle?: string;
-  iconStyle?: string;
-  className?: string;
-}
-
-declare interface PaymentProps {
-  fullName: string;
-  email: string;
-  amount: string;
-  driverId: number;
-  rideTime: number;
-}
-
-declare interface LocationStore {
-  userLatitude: number | null;
-  userLongitude: number | null;
-  userAddress: string | null;
-  destinationLatitude: number | null;
-  destinationLongitude: number | null;
-  destinationAddress: string | null;
-  setUserLocation: ({
-    latitude,
-    longitude,
-    address,
-  }: {
-    latitude: number;
-    longitude: number;
-    address: string;
-  }) => void;
-  setDestinationLocation: ({
-    latitude,
-    longitude,
-    address,
-  }: {
-    latitude: number;
-    longitude: number;
-    address: string;
-  }) => void;
-}
-
-declare interface DriverStore {
-  drivers: MarkerData[];
-  selectedDriver: number | null;
-  setSelectedDriver: (driverId: number) => void;
-  setDrivers: (drivers: MarkerData[]) => void;
-  clearSelectedDriver: () => void;
-}
-
-declare interface DriverCardProps {
-  item: MarkerData;
-  selected: number;
-  setSelected: () => void;
-}
-
-// --------------------------------------------------------------
-
-declare interface OTPModalProps {
-  visible: boolean
-  onVerify: (otp: string) => void
-  onClose: () => void
-}
-
-declare interface SuccessModalProps {
-  visible: boolean
-  onClose: () => void
-}
-
-declare interface TabIconProps {
-  icon: any;
-  color: string;
-  name: string;
-  focused: boolean;
-}
-
-declare interface EmptyStateProps {
-  title: string;
-  subtitle: string;
-  image: ImageProps;
-}
-
-declare interface SearchInputProps {
-  initialQuery?: string;
+  body: string;
+  imageUri?: string;
 }
