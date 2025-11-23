@@ -36,3 +36,10 @@ This is Expo React Native project lets multiple people share a single device whi
 - Use the **Switch** button in the notes header to pick another saved account without leaving the notes tab.
 - Image permissions are requested on demand and can be managed from the device settings if previously denied.
 - Run `npm run lint` to keep the TypeScript and Hooks rules consistent before committing changes.
+
+
+### Build
+- Build link : [a41e61b7-039f-4742-b7e3-3e881e5c7fda — Expo build](https://expo.dev/accounts/bharathkumarreddy2004/projects/notes/builds/a41e61b7-039f-4742-b7e3-3e881e5c7fda)
+
+### Screen Recording
+- Screen Recording : [View Here !](https://youtube.com/shorts/8YEu0YX-l98?si=4WCXnOBJgqH6GXJ7)

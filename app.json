@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Notes",
-    "slug": "Notes",
+    "slug": "notes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.bharathkumarreddy2004.notes"
     },
     "web": {
       "bundler": "metro",
@@ -38,6 +42,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "0d1c68d3-6470-4191-971a-6a25f6df408c"
+      }
+    },
+    "owner": "bharathkumarreddy2004"
   }
 }
