@@ -42,4 +42,4 @@ This is Expo React Native project lets multiple people share a single device whi
 - Build link : [a41e61b7-039f-4742-b7e3-3e881e5c7fda — Expo build](https://expo.dev/accounts/bharathkumarreddy2004/projects/notes/builds/a41e61b7-039f-4742-b7e3-3e881e5c7fda)
 
 ### Screen Recording
-- Screen Recording : [View Here !](https://youtube.com/shorts/8YEu0YX-l98?si=4WCXnOBJgqH6GXJ7)
+- Screen Recording : [View Here !](https://drive.google.com/file/d/16wbZF3ur9pX_DCGb4rvLqXMSbKo2qR3Y/view?usp=drivesdk)
